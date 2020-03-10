@@ -1,0 +1,87 @@
+﻿@model DetailsUserViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>DetailsUserViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Id
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            Username
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+        <dt class="col-sm-2">
+            Email
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            First name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            Middle name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MiddleName)
+        </dd>
+        <dt class="col-sm-2">
+            Last name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            Personal number
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PersonalNumber)
+        </dd>
+        <dt class="col-sm-2">
+            Adress
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class="col-sm-2">
+            Phone number
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            Administrator ?
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsAdministrator)
+        </dd>
+    </dl>
+</div>
+@if (User.IsInRole("Admin"))
+{
+    <div>
+        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <a class="btn btn-outline-primary" asp-action="ViewAll">Back</a>
+    </div>
+}
+else
+{
+    <div>
+        <a class="btn btn-outline-primary" asp-action="ViewAll">Back</a>
+    </div>
+}

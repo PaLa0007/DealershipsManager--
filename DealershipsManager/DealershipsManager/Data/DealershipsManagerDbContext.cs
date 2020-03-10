@@ -4,6 +4,7 @@ using System.Text;
 using DealershipsManager.Data.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using DealershipsManager.Models.User;
 
 namespace DealershipsManager.Data
 {
@@ -25,6 +26,8 @@ namespace DealershipsManager.Data
             public DbSet<Car> Cars { get; set; }
 
             public DbSet<User> Users { get; set; }
+
+            public DbSet<DealershipsManager.Models.User.DetailsUserViewModel> DetailsUserViewModel { get; set; }
         }
     
 }

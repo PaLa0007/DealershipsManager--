@@ -49,6 +49,7 @@ namespace DealershipsManager.Models.User
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
+        [Required]
         public bool IsAdministrator { get; set; }
     }
 }
