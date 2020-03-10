@@ -5,6 +5,10 @@
     <UserSecretsId>aspnet-DealershipsManager-548463FB-209F-46DD-B654-2D11DE034DF3</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.1" />

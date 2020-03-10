@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DealershipsManager.Data.Enumeration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace DealershipsManager.Data.Entities
 
         public EngineEnum Engine { get; set; }
 
-        public string Horsepower { get; set; }
+        public int Horsepower { get; set; }
 
         public TransmissionEnum Transmission { get; set; }
 
