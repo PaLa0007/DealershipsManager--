@@ -1,4 +1,5 @@
-﻿using DealershipsManager.Models.Shared;
+﻿using DealershipsManager.Models.Filters;
+using DealershipsManager.Models.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
