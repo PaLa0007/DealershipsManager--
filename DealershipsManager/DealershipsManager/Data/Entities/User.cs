@@ -18,6 +18,6 @@ namespace DealershipsManager.Data.Entities
 
         public string Address { get; set; }
 
-
+        public bool IsAdministrator { get; set; }
     }
 }

@@ -1,10 +1,9 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DealershipsManager.Data.Migrations
+namespace DealershipsManager.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,7 +39,14 @@ namespace DealershipsManager.Data.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    Discriminator = table.Column<string>(nullable: false),
+                    FirstName = table.Column<string>(nullable: true),
+                    MiddleName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    PersonalNumber = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true),
+                    IsAdministrator = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -48,11 +54,26 @@ namespace DealershipsManager.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Dealerships",
+                columns: table => new
+                {
+                    DealershipId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    Country = table.Column<string>(nullable: true),
+                    Town = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Dealerships", x => x.DealershipId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -73,7 +94,7 @@ namespace DealershipsManager.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -153,6 +174,35 @@ namespace DealershipsManager.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Cars",
+                columns: table => new
+                {
+                    CarId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Manufacturer = table.Column<string>(nullable: true),
+                    Model = table.Column<string>(nullable: true),
+                    Type = table.Column<int>(nullable: false),
+                    Engine = table.Column<int>(nullable: false),
+                    Horsepower = table.Column<int>(nullable: false),
+                    Transmission = table.Column<int>(nullable: false),
+                    Gears = table.Column<byte>(nullable: false),
+                    Color = table.Column<string>(nullable: true),
+                    Price = table.Column<double>(nullable: false),
+                    IsSold = table.Column<bool>(nullable: false),
+                    DealershipId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cars", x => x.CarId);
+                    table.ForeignKey(
+                        name: "FK_Cars_Dealerships_DealershipId",
+                        column: x => x.DealershipId,
+                        principalTable: "Dealerships",
+                        principalColumn: "DealershipId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -191,6 +241,11 @@ namespace DealershipsManager.Data.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Cars_DealershipId",
+                table: "Cars",
+                column: "DealershipId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -211,10 +266,16 @@ namespace DealershipsManager.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Cars");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Dealerships");
         }
     }
 }
