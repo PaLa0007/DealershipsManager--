@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DealershipsManager.Services.Contracts
 {
-    interface IDealershipService
+    public interface IDealershipService
     {
 
         IQueryable<Dealership> GetAllDealerships();
