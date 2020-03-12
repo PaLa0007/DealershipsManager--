@@ -16,6 +16,6 @@ namespace DealershipsManager.Models.Dealership
 
         public string Town { get; set; }
 
-        public virtual ICollection<Car> Cars { get; set; }
+        public virtual ICollection<Data.Entities.Car> Cars { get; set; }
     }
 }

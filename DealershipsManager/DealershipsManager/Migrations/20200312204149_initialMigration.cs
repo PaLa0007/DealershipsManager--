@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DealershipsManager.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class initialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -66,6 +66,26 @@ namespace DealershipsManager.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Dealerships", x => x.DealershipId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DetailsUserViewModel",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Username = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    MiddleName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    PersonalNumber = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    IsAdministrator = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DetailsUserViewModel", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -190,7 +210,8 @@ namespace DealershipsManager.Migrations
                     Color = table.Column<string>(nullable: true),
                     Price = table.Column<double>(nullable: false),
                     IsSold = table.Column<bool>(nullable: false),
-                    DealershipId = table.Column<int>(nullable: false)
+                    DealershipId = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -201,6 +222,12 @@ namespace DealershipsManager.Migrations
                         principalTable: "Dealerships",
                         principalColumn: "DealershipId",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Cars_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -246,6 +273,11 @@ namespace DealershipsManager.Migrations
                 name: "IX_Cars_DealershipId",
                 table: "Cars",
                 column: "DealershipId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Cars_UserId",
+                table: "Cars",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -269,13 +301,16 @@ namespace DealershipsManager.Migrations
                 name: "Cars");
 
             migrationBuilder.DropTable(
+                name: "DetailsUserViewModel");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Dealerships");
 
             migrationBuilder.DropTable(
-                name: "Dealerships");
+                name: "AspNetUsers");
         }
     }
 }

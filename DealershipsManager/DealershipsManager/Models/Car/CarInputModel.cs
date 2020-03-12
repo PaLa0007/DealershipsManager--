@@ -35,5 +35,7 @@ namespace DealershipsManager.Models.Car
         public Data.Entities.Dealership Dealership { get; set; }
 
         public virtual List<Data.Entities.Dealership> AllDealerships { get; set; }
+        public Data.Entities.User User { get; internal set; }
+        public string UserId { get; internal set; }
     }
 }
