@@ -1,0 +1,72 @@
+﻿@model DealershipIndexViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>See our flights.</p>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                Town
+            </th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th>
+                    <a class="btn btn-outline-primary" asp-controller="Dealership" asp-action="Create">Create Flight</a>
+                </th>
+            }
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DealershipDetailsViewModel item in Model.Items)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Town)
+                </td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        <a class="btn btn-outline-primary" asp-controller="Dealership" asp-action="Details" asp-route-id="@item.DealershipId">Details</a>
+                        <a class="btn btn-outline-primary" asp-controller="Dealership" asp-action="Edit" asp-route-id="@item.DealershipId">Edit </a>
+                        <a class="btn btn-outline-primary" asp-controller="Dealership" asp-action="Delete" asp-route-id="@item.DealershipId">Delete</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a class="btn btn-outline-primary" asp-controller="Dealership" asp-action="Details" asp-route-id="@item.DealershipId">Details</a>
+                    </td>
+                }
+
+            </tr>
+        }
+    </tbody>
+    <ul class="pagination">
+        @for (var i = 1; i <= Model.Pager.PagesCount; i++)
+        {
+            <li class="page-item @(i == Model.Pager.CurrentPage ? "active" : "")">
+                <a asp-route-Pager.CurrentPage="@i" class="page-link">@i</a>
+            </li>
+        }
+    </ul>
+</table>
+

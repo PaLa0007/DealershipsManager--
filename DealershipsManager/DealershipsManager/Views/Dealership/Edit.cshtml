@@ -1,0 +1,34 @@
+﻿@model DealershipEditViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-center">Update Flight #(@Model.DealershipId)</h1>
+<hr class="bg-secondary half-width" />
+<form class="mx-auto half-width" method="post" asp-controller="Dealership" asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="DealershipId">Flight Id</label>
+        <input asp-for="DealershipId" class="form-control" readonly="readonly">
+        <span asp-validation-for="DealershipId"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" class="form-control" placeholder="Name...">
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Country">Country</label>
+        <input asp-for="Country" class="form-control" placeholder="Country...">
+    </div>
+    <div class="form-group">
+        <label asp-for="Town">Town</label>
+        <input asp-for="Town" class="form-control" placeholder="Town...">
+    </div>
+  
+    <div class="button-holder mt-2 d-flex w-25 mx-auto justify-content-between">
+        <button type="submit" class="btn btn-outline-primary">Edit</button>
+        <button type="submit" class="btn btn-outline-primary">Cancel</button>
+    </div>
+</form>
+
