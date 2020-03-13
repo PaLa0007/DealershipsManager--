@@ -32,10 +32,10 @@ namespace DealershipsManager.Models.Car
 
         public int DealershipId { get; set; }
 
-        public Data.Entities.Dealership Dealership { get; set; }
+        public virtual Data.Entities.Dealership Dealership { get; set; }
 
         public virtual List<Data.Entities.Dealership> AllDealerships { get; set; }
-        public Data.Entities.User User { get; internal set; }
-        public string UserId { get; internal set; }
+        public virtual Data.Entities.User User { get; set; }
+        public string UserId { get; set; }
     }
 }

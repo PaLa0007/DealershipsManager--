@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DealershipsManager.Migrations
 {
-    public partial class InitialCreate2 : Migration
+    public partial class InitialCreate22 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -66,26 +66,6 @@ namespace DealershipsManager.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Dealerships", x => x.DealershipId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "DetailsUserViewModel",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    Username = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    FirstName = table.Column<string>(nullable: true),
-                    MiddleName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    PersonalNumber = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    IsAdministrator = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DetailsUserViewModel", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -299,9 +279,6 @@ namespace DealershipsManager.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cars");
-
-            migrationBuilder.DropTable(
-                name: "DetailsUserViewModel");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

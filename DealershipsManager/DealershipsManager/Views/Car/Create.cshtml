@@ -21,22 +21,21 @@
         <label asp-for="Model">Model</label>
         <input asp-for="Model" class="form-control" placeholder="Model...">
     </div>
-
     <div class="form-group">
-        <label asp-for="Type">Type</label>
-        <input asp-for="Type" class="form-control" placeholder="Type...">
+        <label asp-for="Type">Coupe</label>
+        <select asp-for="@Model.Type" asp-items="Html.GetEnumSelectList<TypeEnum>()"> </select>
     </div>
     <div class="form-group">
-        <label asp-for="Engine">Engine</label>
-        <input asp-for="Engine" class="form-control" placeholder="Engine...">
+        <label asp-for="Engine">Fuel type</label>
+        <select asp-for="@Model.Engine" asp-items="Html.GetEnumSelectList<EngineEnum>()"> </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Transmission">Transmission</label>
+        <select asp-for="@Model.Transmission" asp-items="Html.GetEnumSelectList<TransmissionEnum>()"> </select>
     </div>
     <div class="form-group">
         <label asp-for="Horsepower">Horsepower</label>
         <input asp-for="Horsepower" class="form-control" placeholder="Horsepower...">
-    </div>
-    <div class="form-group">
-        <label asp-for="Transmission">Transmission</label>
-        <input asp-for="Transmission" class="form-control" placeholder="Transmission...">
     </div>
     <div class="form-group">
         <label asp-for="Gears">Gears</label>
@@ -50,17 +49,14 @@
         <label asp-for="Price">Price</label>
         <input asp-for="Price" class="form-control" placeholder="Price...">
     </div>
-    <div class="form-group">
-        <label asp-for="IsSold">Is the car sold</label>
-        <input asp-for="IsSold" class="form-control" placeholder="IsSold...">
-    </div>
+
     <div class="form-group">
         <label asp-for="UserId">UserId</label>
-        <input asp-for="UserId" class="form-control" placeholder="@Model.UserId..." readonly>
+        <input asp-for="UserId" class="form-control" readonly>
     </div>
     <div class="form-group">
         <label asp-for="User">User</label>
-        <input asp-for="User" class="form-control" value="@User.Identity.Name" readonly>
+        <input asp-for="User" class="form-control"  readonly>
     </div>
     <!--div class="form-group">
         <label asp-for="DealershipId">Dealership id</label>

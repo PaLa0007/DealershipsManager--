@@ -27,7 +27,7 @@ namespace DealershipsManager.Data
 
             public DbSet<User> Users { get; set; }
 
-            public DbSet<DealershipsManager.Models.User.DetailsUserViewModel> DetailsUserViewModel { get; set; }
+         //   public DbSet<DealershipsManager.Models.User.DetailsUserViewModel> DetailsUserViewModel { get; set; }
         }
     
 }

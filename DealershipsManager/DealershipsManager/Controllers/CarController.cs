@@ -33,9 +33,9 @@ namespace DealershipsManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CarInputModel model)
+        public IActionResult Create(CarInputModel InputModel)
         {
-            service.AddCar(model);
+            service.AddCar(InputModel);
             return Redirect("/");
         }
 

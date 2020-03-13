@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DealershipsManager.Migrations
 {
     [DbContext(typeof(DealershipsManagerDbContext))]
-    [Migration("20200313184444_InitialCreate2")]
-    partial class InitialCreate2
+    [Migration("20200313193632_InitialCreate22")]
+    partial class InitialCreate22
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -92,43 +92,6 @@ namespace DealershipsManager.Migrations
                     b.HasKey("DealershipId");
 
                     b.ToTable("Dealerships");
-                });
-
-            modelBuilder.Entity("DealershipsManager.Models.User.DetailsUserViewModel", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsAdministrator")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MiddleName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PersonalNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DetailsUserViewModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
