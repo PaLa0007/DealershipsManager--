@@ -1,0 +1,97 @@
+﻿@model CarViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>CarDetailsViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Flight Id
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CarId)
+        </dd>
+        <dt class="col-sm-2">
+            First name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Manufacturer)
+        </dd>
+        <dt class="col-sm-2">
+            Second name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+        <dt class="col-sm-2">
+            Last name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class="col-sm-2">
+            Email
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Engine)
+        </dd>
+        <dt class="col-sm-2">
+            Personal number
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Horsepower)
+        </dd>
+        <dt class="col-sm-2">
+            Phone number
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Transmission)
+        </dd>
+        <dt class="col-sm-2">
+            Nationality
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gears)
+        </dd>
+        <dt class="col-sm-2">
+            Ticket type
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+        <dt class="col-sm-2">
+            Ticket type
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class="col-sm-2">
+            Ticket type
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsSold)
+        </dd>
+        <dt class="col-sm-2">
+            User id
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt class="col-sm-2">
+            Flight id
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DealershipId)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@Model.CarId">Edit</a> |
+    <a class="btn btn-outline-primary" asp-action="Index">Back</a>
+</div>

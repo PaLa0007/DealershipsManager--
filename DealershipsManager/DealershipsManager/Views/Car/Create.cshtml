@@ -1,0 +1,86 @@
+﻿
+@model DealershipsManager.Models.Car.CarInputModel
+@using Microsoft.AspNetCore.Identity
+@using DealershipsManager.Data.Entities
+@inject SignInManager<User> signInManager
+@inject UserManager<User> userManager
+@{
+    ViewData["Title"] = "Create";
+
+}
+
+<h1 class="text-center">Create Car</h1>
+<hr class="bg-secondary half-width" />
+<form class="mx-auto half-width" method="post" asp-controller="Car" asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Manufacturer">Manufacturer</label>
+        <input asp-for="Manufacturer" class="form-control" placeholder="Manufacturer...">
+        <span asp-validation-for="Manufacturer"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Model">Model</label>
+        <input asp-for="Model" class="form-control" placeholder="Model...">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Type">Type</label>
+        <input asp-for="Type" class="form-control" placeholder="Type...">
+    </div>
+    <div class="form-group">
+        <label asp-for="Engine">Engine</label>
+        <input asp-for="Engine" class="form-control" placeholder="Engine...">
+    </div>
+    <div class="form-group">
+        <label asp-for="Horsepower">Horsepower</label>
+        <input asp-for="Horsepower" class="form-control" placeholder="Horsepower...">
+    </div>
+    <div class="form-group">
+        <label asp-for="Transmission">Transmission</label>
+        <input asp-for="Transmission" class="form-control" placeholder="Transmission...">
+    </div>
+    <div class="form-group">
+        <label asp-for="Gears">Gears</label>
+        <input asp-for="Gears" class="form-control" placeholder="Gears...">
+    </div>
+    <div class="form-group">
+        <label asp-for="Color">Color</label>
+        <input asp-for="Color" class="form-control" placeholder="Color...">
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Price</label>
+        <input asp-for="Price" class="form-control" placeholder="Price...">
+    </div>
+    <div class="form-group">
+        <label asp-for="IsSold">Is the car sold</label>
+        <input asp-for="IsSold" class="form-control" placeholder="IsSold...">
+    </div>
+    <div class="form-group">
+        <label asp-for="UserId">UserId</label>
+        <input asp-for="UserId" class="form-control" placeholder="@Model.UserId..." readonly>
+    </div>
+    <div class="form-group">
+        <label asp-for="User">User</label>
+        <input asp-for="User" class="form-control" value="@User.Identity.Name" readonly>
+    </div>
+    <!--div class="form-group">
+        <label asp-for="DealershipId">Dealership id</label>
+        <input asp-for="DealershipId" class="form-control" placeholder="Dealership id...">
+    </div-->
+    <div class="form-group">
+
+        <label asp-for="DealershipId">Dealership</label>
+        <select asp-for="DealershipId" class="form-control">
+            @foreach (var item in Model.AllDealerships)
+            {
+                <option value="@item.DealershipId"> @item.Name</option>
+            }
+        </select>
+
+        <!--input asp-for="Dealership" class="form-control" placeholder="Dealership..."-->
+    </div>
+
+    <div class="button-holder d-flex justify-content-center">
+        <button type="submit" class="btn btn-outline-primary">Add Car</button>
+    </div>
+</form>
+

@@ -1,0 +1,78 @@
+﻿@model CarEditInputModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="text-center">Remove Car</h1>
+<hr class="bg-secondary half-width" />
+<form class="mx-auto half-width" method="post" asp-controller="Reservation" asp-action="Delete">
+    <div class="form-group">
+        <label asp-for="CarId">Car id</label>
+        <input asp-for="CarId" class="form-control" placeholder="CarId..." readonly="readonly">
+        <span asp-validation-for="CarId"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Manufacturer">Manufacturer</label>
+        <input asp-for="Manufacturer" class="form-control" placeholder="Manufacturer..." readonly="readonly">
+        <span asp-validation-for="Manufacturer"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Model">Model</label>
+        <input asp-for="Model" class="form-control" placeholder="Model..." readonly="readonly">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Type">Type</label>
+        <input asp-for="Type" class="form-control" placeholder="Type..." readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label asp-for="Engine">Engine</label>
+        <input asp-for="Engine" class="form-control" placeholder="Engine..." readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label asp-for="Horsepower">Horsepower</label>
+        <input asp-for="Horsepower" class="form-control" placeholder="Horsepower..." readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label asp-for="Transmission">Transmission</label>
+        <input asp-for="Transmission" class="form-control" placeholder="Transmission..." readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label asp-for="Gears">Gears</label>
+        <input asp-for="Gears" class="form-control" placeholder="Gears..." readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label asp-for="Color">Color</label>
+        <input asp-for="Color" class="form-control" placeholder="Color..." readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Price</label>
+        <input asp-for="Price" class="form-control" placeholder="Price..." readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label asp-for="IsSold">Is this car sold</label>
+        <input asp-for="IsSold" class="form-control" placeholder="IsSold..." readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label asp-for="UserId">UserId</label>
+        <input asp-for="UserId" class="form-control" placeholder="UserId..." readonly="readonly">
+    </div>
+    <!----div class="form-group">
+        <label asp-for="User">User</label>
+        <input asp-for="User" class="form-control" placeholder="User...">
+    </!--div-->
+    <div class="form-group">
+        <label asp-for="DealershipId">Dealership id</label>
+        <input asp-for="DealershipId" class="form-control" placeholder="Dealership id..." readonly="readonly">
+    </div>
+    <!----div class="form-group">
+        <label asp-for="Flight">Flight</label>
+        <input asp-for="Flight" class="form-control" placeholder="Flight..." disabled>
+    </!--div-->
+
+    <div class="button-holder mt-2 d-flex w-25 mx-auto justify-content-between">
+        <button type="submit" class="btn btn-outline-primary">Delete</button>
+        <button class="btn btn-outline-primary" asp-controller="Home" asp-action="Index">Cancel</button>
+    </div>
+</form>
+

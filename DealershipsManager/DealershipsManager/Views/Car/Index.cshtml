@@ -1,0 +1,90 @@
+﻿
+@model CarIndexViewModel
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>See our reservations.</p>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Manufacturer
+            </th>
+            <th>
+                Model
+            </th>
+            <th>
+                Engine
+            </th>
+            <th>
+                Horsepower
+            </th>
+            <th>
+                Transmission
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Is the car sold
+            </th>
+            <th>
+                <a class="btn btn-outline-primary" asp-controller="Car" asp-action="Create">Create car</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (CarViewModel item in Model.Items)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Engine)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Horsepower)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Transmission)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsSold)
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary" asp-controller="Car" asp-action="Details" asp-route-id="@item.CarId">Details</a>
+                    <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.CarId">Edit</a>
+                    <a class="btn btn-outline-primary" asp-action="Delete" asp-route-id="@item.CarId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <ul class="pagination">
+        @for (var i = 1; i <= Model.Pager.PagesCount; i++)
+        {
+            <li class="page-item @(i == Model.Pager.CurrentPage ? "active" : "")">
+                <a asp-route-Pager.CurrentPage="@i" class="page-link">@i</a>
+            </li>
+        }
+    </ul>
+</table>
+
