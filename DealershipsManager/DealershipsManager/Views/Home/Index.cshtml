@@ -1,8 +1,37 @@
-﻿@{
+﻿
+@using Microsoft.AspNetCore.Identity
+@using DealershipsManager.Data.Entities
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+
+@{
     ViewData["Title"] = "Home Page";
+    ViewData["userName"] = User.Identity.Name;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Login for test Username:admin Password:admin</p>
-</div>
+
+
+    <div class="text-center">
+
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <div>
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+            </div>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <form class="form-inline" asp-controller="User" asp-action="Register">
+                    <button type="submit" class="nav-link btn btn-outline-primary ali">Register new user</button>
+                </form>
+            }
+        }
+        else
+        {
+            <div class="text-center">
+                <h1 class="display-4">Welcome</h1>
+                <p>Login for test Username:admin Password:admin</p>
+            </div>
+        }
+    </div>
