@@ -36,6 +36,7 @@ namespace DealershipsManager.Services
                 Transmission = entity.Transmission,
                 Gears = entity.Gears,
                 Color = entity.Color,
+                Price = entity.Price,
                 UserId = entity.UserId,
                 User = entity.User,
                 Dealership = entity.Dealership,
