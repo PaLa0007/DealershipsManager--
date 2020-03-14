@@ -45,7 +45,7 @@
 @if (User.IsInRole("Admin"))
 {
     <div>
-        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@Model.DealershipId">Edit</a>
+        <a class="btn btn-outline-danger" asp-action="Edit" asp-route-id="@Model.DealershipId">Edit</a>
         <a class="btn btn-outline-primary" asp-action="Index">Back</a>
     </div>
 }
