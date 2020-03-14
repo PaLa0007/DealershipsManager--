@@ -1,4 +1,4 @@
-﻿@model DetailsUserViewModel
+﻿@model EditUserViewModel
 @{
     ViewData["Title"] = "Edit";
 }
@@ -9,11 +9,11 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form class="mx-auto half-width" method="post" asp-controller="User" asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
+                <input asp-for="Id" class="form-control" readonly />
                 <span asp-validation-for="Id" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -62,7 +62,7 @@
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-outline-danger" />
+                <button type="submit" class="btn btn-outline-danger">Edit</button>
             </div>
         </form>
     </div>

@@ -131,7 +131,7 @@ namespace DealershipsManager.Controllers
         {
             User user = await this.userService.GetUserById(id);
 
-            DetailsUserViewModel model = new DetailsUserViewModel
+            EditUserViewModel model = new EditUserViewModel
             {
                 Id = user.Id,
                 Username = user.UserName,
@@ -154,7 +154,7 @@ namespace DealershipsManager.Controllers
         public async Task<IActionResult> Edit(DetailsUserViewModel model)
         {
             await this.userService.UpdateUser(model);
-            return Redirect("/User");
+            return Redirect("/Home");
         }
 
         public IActionResult Logout()
